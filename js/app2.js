@@ -12,40 +12,98 @@ const treeData = function(inData) {
     let structure = {}
     structure.name = inData[0].livello1
     
-    function splitLayer(data, layerNum) {
+    function splitLayerLast(data, layerNum) {
         let temp = []
         data.forEach((d, i) => {
-            let match = {}
-            let endNodeCheck = false
-            d["livello" + (layerNum + 1)] === "" ? endNodeCheck = true : endNodeCheck = false
-            //console.log(match)
-            //if (match === undefined && d["livello" + layerNum] != "") {
-            if (endNodeCheck) {
-                temp.push({
-                    name: d["livello" + layerNum],
-                    children : [{
-                        name: d["livello" + (layerNum + 1)],
+            let emptyNodeTest = false
+            let endNodeTest = false
+            d["livello" + layerNum] === "" ? emptyNodeTest = true : emptyNodeTest = false
+            d["livello" + (layerNum + 1)] === "" ? endNodeTest = true : endNodeTest = false
+            
+            if (!emptyNodeTest) {   //level empty > do nothing
+                if (endNodeTest) { //next level empty (no children) > create a "name, value" obj
+                    temp.push({
+                        name: d["livello" + layerNum],
+                        ref: d["livello" + (layerNum - 1)],
                         value: 0
-                    }]
-                })
-            } else {
-                
+                    })
+                } else { //next level not empty > create a "name, children" obj or add children to existing obj
+                    let item = temp.find(el => el.name === d["livello" + layerNum])
+                    if (item === undefined) {
+                        temp.push({
+                            name: d["livello" + layerNum],
+                            ref: d["livello" + (layerNum - 1)],
+                            children: [{
+                                name: d["livello" + (layerNum + 1)],
+                                value: 0
+                            }]
+                        })
+                    } else {
+                        item.children.push({
+                            name: d["livello" + (layerNum + 1)],
+                            value: 0
+                        })
+                    }
+                } 
             }
+        })
+        //console.log("temp: ", temp)
+        return temp
+    }
+
+    function splitLayer(data, layerNum, arr) {
+
+        let temp = []
+
+        data.forEach((d, i) => {
+            let emptyNodeTest = false
+            let endNodeTest = false
+            d["livello" + layerNum] === "" ? emptyNodeTest = true : emptyNodeTest = false
+            d["livello" + (layerNum + 1)] === "" ? endNodeTest = true : endNodeTest = false
+            
+            if (!emptyNodeTest) {   //level empty > do nothing
+                if (endNodeTest) { //next level empty (no children) > create a "name, value" obj
+                    temp.push({
+                        name: d["livello" + layerNum],
+                        value: 0
+                    })
+                }
+            }
+        })
+        arr.forEach(el => {
+            temp.push({
+                name: el.name,
+                children: el.children
+            })
         })
         console.log("temp: ", temp)
         return temp
     }
+
+    const levelThreeRef = splitLayerLast(inData, 3)
+    console.log("levelThreeRef: ", levelThreeRef)
+
+    const nestedData = d3.nest()
+        .key(d => d.ref)
+        .entries(levelThreeRef)
+    nestedData.forEach(d => {
+        d.name = d.key
+        d.children = d.values
+        delete d.key
+        delete d.values
+    })
+    console.log("nestedData: ", nestedData)
     
-    structure.children = splitLayer(inData, 3)
-    console.log("structure: ", structure)
+    structure.children = splitLayer(inData, 2, nestedData)
+
     return structure
 }
 
 //d3.json("../data/flare.json").then(function(data){
-d3.csv("../data/architecture_4levels.csv").then(function(csvData){
+d3.csv("../data/architecture_4levels_ver2.csv").then(function(csvData){
 
     const data = treeData(csvData)
-    console.log(data)
+    console.log("data: ", data)
     const root = d3.hierarchy(data)
 
     root.x0 = dy / 2;
