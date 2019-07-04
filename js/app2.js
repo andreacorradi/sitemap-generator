@@ -7,7 +7,14 @@ const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x)
 const tree = d3.tree().nodeSize([dx, dy])
 
 const treeData = function(inData) {
-    const maxLength = inData[0].length
+
+    let numLevels = 0
+    inData.forEach(d => {
+        const temp = Object.keys(d).length
+        if (temp > numLevels) numLevels = temp
+    })
+    console.log("numLevels: ", numLevels)
+    
     console.log("inData: ", inData)
     let structure = {}
     structure.name = inData[0].livello1
@@ -76,31 +83,35 @@ const treeData = function(inData) {
                 children: el.children
             })
         })
-        console.log("temp: ", temp)
         return temp
     }
 
-    const levelThreeRef = splitLayerLast(inData, 3)
-    console.log("levelThreeRef: ", levelThreeRef)
+    const layerLastRef = splitLayerLast(inData, numLevels - 1)
+    //console.log("layerLastRef: ", layerLastRef)
 
-    const nestedData = d3.nest()
-        .key(d => d.ref)
-        .entries(levelThreeRef)
-    nestedData.forEach(d => {
-        d.name = d.key
-        d.children = d.values
-        delete d.key
-        delete d.values
-    })
-    console.log("nestedData: ", nestedData)
-    
-    structure.children = splitLayer(inData, 2, nestedData)
+    if (numLevels < 4) {
+        structure.children = layerLastRef
+    } else {
+        for (let i = numLevels - 1; i > 2 ; i--){
+            const nestedData = d3.nest()
+                .key(d => d.ref)
+                .entries(layerLastRef)
+            nestedData.forEach(d => {
+                d.name = d.key
+                d.children = d.values
+                delete d.key
+                delete d.values
+            })
+            //console.log("nestedData: ", nestedData)
+            structure.children = splitLayer(inData, i - 1, nestedData)
+        }
+    }
 
     return structure
 }
 
 //d3.json("../data/flare.json").then(function(data){
-d3.csv("../data/architecture_4levels_ver2.csv").then(function(csvData){
+d3.csv("../data/filodoro_4levels.csv").then(function(csvData){
 
     const data = treeData(csvData)
     console.log("data: ", data)
