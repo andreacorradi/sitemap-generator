@@ -14,11 +14,10 @@ const treeData = function(inData) {
         if (temp > numLevels) numLevels = temp
     })
     console.log("numLevels: ", numLevels)
-    
-    console.log("inData: ", inData)
+    //console.log("inData: ", inData)
     let structure = {}
     
-    function splitLayerLast(data, layerNum, arr) {
+    function splitLayer(data, layerNum, arr) {
         let temp = []
         let nestedData = []
         if (arr !== undefined) {
@@ -31,8 +30,8 @@ const treeData = function(inData) {
                 delete d.key
                 delete d.values
             })
+            console.log("nestedData: ", nestedData)
         }
-        console.log("nestedData: ", nestedData)
         data.forEach((d, i) => {
             let emptyNodeTest = false
             let endNodeTest = false
@@ -70,6 +69,7 @@ const treeData = function(inData) {
                         if (match === undefined) {
                             temp.push({
                                 name: item.name,
+                                ref: d["livello" + (layerNum - 1)],
                                 children: item.children
                             })
                         }
@@ -81,43 +81,27 @@ const treeData = function(inData) {
         return temp
     }
 
-    function splitLayer(data, layerNum, arr) {
-
-        let temp = []
-
-        data.forEach((d, i) => {
-            let emptyNodeTest = false
-            let endNodeTest = false
-            d["livello" + layerNum] === "" ? emptyNodeTest = true : emptyNodeTest = false
-            d["livello" + (layerNum + 1)] === "" ? endNodeTest = true : endNodeTest = false
-            
-            if (!emptyNodeTest) {   //level empty > do nothing
-                if (endNodeTest) { //next level empty (no children) > create a "name, value" obj
-                    temp.push({
-                        name: d["livello" + layerNum],
-                        value: 0
-                    })
-                }
-            }
-        })
-        arr.forEach(el => {
-            temp.push({
-                name: el.name,
-                children: el.children
-            })
-        })
-        return temp
+    function makeLayers() {
+        let tempArr = undefined
+        let father = []
+        for (let i = numLevels - 1; i > 1; i--) {
+            father = splitLayer(inData, i, tempArr)
+            console.log("father: ", father)
+            tempArr = JSON.parse(JSON.stringify(father))
+        }
+        return father
     }
 
-    const layerLastRef = splitLayerLast(inData, numLevels - 1)
-    console.log("layerLastRef: ", layerLastRef)
-    const pippo = splitLayerLast(inData, numLevels - 2, layerLastRef)
-    console.log("pippo: ", pippo)
-    // const pluto = splitLayerLast(inData, numLevels - 3, pippo)
+    // const layerLastRef = splitLayer(inData, numLevels - 1)
+    // console.log("layerLastRef: ", layerLastRef)
+    // const pippo = splitLayer(inData, numLevels - 2, layerLastRef)
+    // console.log("pippo: ", pippo)
+    // const pluto = splitLayer(inData, numLevels - 3, pippo)
     // console.log("pluto: ", pluto)
 
     structure.name = inData[0].livello1
-    structure.children = pippo
+    structure.children = makeLayers()
+
     return structure
 }
 
