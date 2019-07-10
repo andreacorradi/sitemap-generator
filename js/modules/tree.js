@@ -1,8 +1,7 @@
-function Tree() {
+function Tree(width) {
     self = this
 
     const margin = ({top: 10, right: 120, bottom: 10, left: 40})
-    const width = 1200
     const dy = width / 6
     const dx = 10
     const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x)
@@ -128,7 +127,6 @@ function Tree() {
         }
 
         update(root)
-
         svg.node()
             
         }

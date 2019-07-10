@@ -2,7 +2,6 @@ function DataProcessor() {
     self = this
 
     self.process = function(inData) {
-
         let numLevels = 0 //number of columns of the source csv file
         inData.forEach(d => { //calculate numLevels
             const temp = Object.keys(d).length
@@ -75,7 +74,7 @@ function DataProcessor() {
             //console.log("temp: ", temp)
             return temp
         }
-    
+
         function makeLayers() {
             let tempArr = undefined
             let father = []
@@ -86,17 +85,10 @@ function DataProcessor() {
             }
             return father
         }
-    
-        // const layerLastRef = splitLayer(inData, numLevels - 1)
-        // console.log("layerLastRef: ", layerLastRef)
-        // const pippo = splitLayer(inData, numLevels - 2, layerLastRef)
-        // console.log("pippo: ", pippo)
-        // const pluto = splitLayer(inData, numLevels - 3, pippo)
-        // console.log("pluto: ", pluto)
-    
+
         structure.name = inData[0].livello1
         structure.children = makeLayers()
-    
+
         return structure
     }
 
