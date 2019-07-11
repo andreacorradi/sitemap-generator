@@ -9,16 +9,37 @@ body {
   background: white;
   font-family: Arial, sans-serif;
   font-weight: 300;
+  color: #454545;
 }
 h1 {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
   font-size: 2.4rem;
   margin-bottom: 0.75rem;
+  color: #e61532;
 }
 h3 {
-  font-size: 1.2rem;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
-
+h4 {
+  font-size: 0.8rem;
+  text-align: center;
+  text-decoration: underline;
+}
+p {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: #e61532;
+}
+button {
+  width: 6rem;
+  height: 1.6rem; 
+  border-radius: .2rem;
+}
 section {
   padding: 1rem;
   height: 100vh;
@@ -32,24 +53,61 @@ section {
   align-items: center;
   justify-content: center;
 }
+.h-centered {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+section.input-container #source {
+  padding-bottom: 6rem;
+}
+section.input-container #subtitle {
+  width: 30%;
+}
 section.input-container .input-box {
   margin-top: 1rem;
-}
-section.input-container .input-box {
-  height: 3rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 }
 section.input-container .input-box input#user-url {
-  width: 16rem;
-  height: 1.6rem;
+  border: 1px solid #e61532;
+  width: 80%;
+  height: 3rem;
+  border-radius: .2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.6rem;
+  color: #454545;
 }
-button {
-  width: 6rem;
-  height: 1.6rem;
+section.input-container button#run-button {
+  width: 19%;
+  height: 3rem;
+  background: #e61532;
+  border: 1px solid #e61532;
+  font-size: 1.2rem;
+  color: white;
+}
+section.input-container .demo-box {
+  padding-top: 1rem;
+}
+section.input-container .demo-box p {
+  font-size: 0.75rem;
+  color: #aaaaaa;
+}
+section.input-container .demo-box p a {
+  color: #aaaaaa;
+}
+section.input-container .demo-box #demo-button {
+  width: 4rem;
+  height: 1.2rem;
+  font-size: 0.6rem;
+  color: #aaaaaa;
 }
 section.chart-container #back-button {
-  /* position: absolute;
-  top: 1rem;
-  left: 1rem; */
   margin-top: 1rem;
   margin-left: 1rem;
   width: 2rem;
@@ -58,6 +116,7 @@ section.chart-container #back-button {
 section.chart-container #chart {
   width: 100%;
   height: 100%;
+  margin-top: 2rem;
   background: white;
 }
 

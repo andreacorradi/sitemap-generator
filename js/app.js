@@ -47,10 +47,11 @@
             document.querySelector("section.chart-container #chart svg").remove()
             document.querySelector("section.input-container").style.display = "flex"
             document.querySelector("section.chart-container").style.display = "none"
+            document.getElementById("user-url").value = ""
         }
         //console.log(spreadSheetData)
         const processedData = APP.dataProcessor.process(spreadSheetData)
-        //console.log("data: ", processedData)
+        console.log("data: ", processedData)
         APP.tree.plot(processedData)
     }
    
