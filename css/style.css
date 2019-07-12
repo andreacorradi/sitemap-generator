@@ -67,7 +67,7 @@ section.input-container #subtitle {
 }
 section.input-container .input-box {
   margin-top: 1rem;
-  width: 70%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -81,15 +81,28 @@ section.input-container .input-box input#user-url {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   font-size: 1.6rem;
-  color: #454545;
+  color: #e61532;;
+}
+section.input-container .input-box input#user-url:focus { 
+  border: 2px solid #e61532;
+  outline:0;
 }
 section.input-container button#run-button {
   width: 19%;
   height: 3rem;
   background: #e61532;
   border: 1px solid #e61532;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.025rem;
   color: white;
+  transition: all 0.3s ease 0s;
+}
+section.input-container button#run-button:focus, section.input-container button#demo-button:focus { 
+  outline:0;
+}
+section.input-container button#run-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 10px rgba(230, 21, 50, 0.25);
 }
 section.input-container .demo-box {
   padding-top: 1rem;
@@ -107,17 +120,34 @@ section.input-container .demo-box #demo-button {
   font-size: 0.6rem;
   color: #aaaaaa;
 }
+section.input-container .demo-box #demo-button:hover {
+  border-color: #e61532;
+  color: #e61532;
+}
 section.chart-container #back-button {
   margin-top: 1rem;
   margin-left: 1rem;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
+  stroke: #454545;
+  stroke-width: 2px;
+}
+section.chart-container #back-button:hover svg g path, section.chart-container #back-button:hover svg g circle {
+  stroke: #e61532;
 }
 section.chart-container #chart {
   width: 100%;
   height: 100%;
   margin-top: 2rem;
   background: white;
+}
+
+@media only screen and (max-width: 1199px){
+ 
+  section.input-container .input-box {
+    width: 70%;
+  }
+   
 }
 
 .node {

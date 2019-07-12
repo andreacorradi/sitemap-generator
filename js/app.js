@@ -10,7 +10,7 @@
         document.querySelector("section.input-container").style.display = "flex"
         document.querySelector("section.chart-container").style.display = "none"
         
-        const testUrl = 'https://docs.google.com/spreadsheets/d/1zu9abUyBMr9NixxCs0yPhX0vcutec1illVoNQIz-rDs/edit?usp=sharing'
+        const testUrl = 'https://docs.google.com/spreadsheets/d/1go7xaFFOhF4cRRrJKhp0-7GAMSBbaVo_YtLrLLPa-uY/edit?usp=sharing'
 
         document.getElementById("run-button").onclick = function() {
             const url = document.getElementById("user-url").value
@@ -20,12 +20,21 @@
                     simpleSheet: true
                 })
             } else {
-                console.log("test!")
-                Tabletop.init({ key: testUrl,
-                    callback: showInfo,
-                    simpleSheet: true
-                })
+                console.log("error")
+                window.alert("Please input a valid URL!")
+                // Tabletop.init({ key: testUrl,
+                //     callback: showInfo,
+                //     simpleSheet: true
+                // })
             }
+        }
+
+        document.getElementById("demo-button").onclick = function() {
+            console.log("test")
+            Tabletop.init({ key: testUrl,
+                callback: showInfo,
+                simpleSheet: true
+            })
         }
 
         // document.getElementById("svg-button").onclick = function() {

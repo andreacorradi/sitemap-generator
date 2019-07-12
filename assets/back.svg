@@ -3,12 +3,11 @@
 <svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 62 62" enable-background="new 0 0 62 62" xml:space="preserve">
 <g id="Group_78" transform="translate(-21.02 -13.742)">
-	<path id="Path_81" fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M48.76,33.62
+	<path id="Path_81" fill="none" stroke-linecap="round" stroke-linejoin="round" d="M48.76,33.62
 		L38.03,44.34l10.72,10.72"/>
-	<path id="Path_82" fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" d="M38.09,44.34h28.45"/>
+	<path id="Path_82" fill="none" stroke-linecap="round" d="M38.09,44.34h28.45"/>
 </g>
 <g id="Ellipse_84">
-	<circle fill="none" cx="31" cy="30.5" r="29"/>
-	<circle fill="none" stroke="#333333" stroke-width="2" cx="31" cy="30.5" r="28"/>
+	<circle fill="none" cx="31" cy="30.5" r="28"/>
 </g>
 </svg>

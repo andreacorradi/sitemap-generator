@@ -72,7 +72,7 @@ function Tree(width) {
 
             nodeEnter.append("circle")
                 .attr("r", 2.5)
-                .attr("fill", d => d._children ? "#555" : "#999")
+                .attr("fill", d => d._children ? "#e61532" : "#454545")
                 .attr("stroke-width", 10)
 
             nodeEnter.append("text")
