@@ -21,7 +21,7 @@ h1 {
 h3 {
   font-family: Georgia, serif;
   font-size: 1rem;
-  line-height: 1.2rem;
+  line-height: 1.4rem;
   margin-bottom: 0.5rem;
   text-align: center;
 }
@@ -92,7 +92,7 @@ section.input-container button#run-button {
   height: 3rem;
   background: #e61532;
   border: 1px solid #e61532;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.025rem;
   color: white;
   transition: all 0.3s ease 0s;
