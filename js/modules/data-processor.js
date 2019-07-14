@@ -1,5 +1,5 @@
 function DataProcessor() {
-    self = this
+    let self = this
 
     self.process = function(inData) {
         let numLevels = 0 //number of columns of the source csv file
@@ -89,7 +89,10 @@ function DataProcessor() {
         structure.name = inData[0].livello1
         structure.children = makeLayers()
 
-        return structure
+        return {
+            tree: structure,
+            levels: numLevels
+        }
     }
 
     return self

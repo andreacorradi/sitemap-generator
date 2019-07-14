@@ -11,6 +11,10 @@ body {
   font-weight: 300;
   color: #454545;
 }
+main {
+  width: 100%;
+  height: 100%;
+}
 h1 {
   padding-top: 1rem;
   padding-bottom: 0.5rem;
@@ -124,22 +128,35 @@ section.input-container .demo-box #demo-button:hover {
   border-color: #e61532;
   color: #e61532;
 }
-section.chart-container #back-button {
-  margin-top: 1rem;
-  margin-left: 1rem;
-  width: 3rem;
-  height: 3rem;
-  stroke: #454545;
-  stroke-width: 2px;
+section.loader-container {
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-section.chart-container #back-button:hover svg g path, section.chart-container #back-button:hover svg g circle {
-  stroke: #e61532;
+section.loader-container #loader {
+  height: 2rem;
+}
+section.chart-container header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 section.chart-container #chart {
   width: 100%;
   height: 100%;
   margin-top: 2rem;
   background: white;
+}
+section.chart-container footer {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 1199px){

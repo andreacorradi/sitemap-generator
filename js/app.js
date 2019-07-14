@@ -1,67 +1,17 @@
 ;(function(window, undefined) {
 
-    window.APP = {}
+    window.APP = window.APP || {}
     
     APP.init = function() {
+
         const viewportWidth = document.querySelector("main").offsetWidth
         APP.dataProcessor = new DataProcessor()
         APP.tree = new Tree(viewportWidth)
+        APP.ui = new Ui()
 
-        document.querySelector("section.input-container").style.display = "flex"
-        document.querySelector("section.chart-container").style.display = "none"
-        
-        const testUrl = 'https://docs.google.com/spreadsheets/d/1go7xaFFOhF4cRRrJKhp0-7GAMSBbaVo_YtLrLLPa-uY/edit?usp=sharing'
+        APP.stator = new window.States()
+        APP.stator.init()
 
-        document.getElementById("run-button").onclick = function() {
-            const url = document.getElementById("user-url").value
-            if (url !== "") {
-                Tabletop.init({ key: url,
-                    callback: showInfo,
-                    simpleSheet: true
-                })
-            } else {
-                console.log("error")
-                window.alert("Please input a valid URL!")
-                // Tabletop.init({ key: testUrl,
-                //     callback: showInfo,
-                //     simpleSheet: true
-                // })
-            }
-        }
-
-        document.getElementById("demo-button").onclick = function() {
-            console.log("test")
-            Tabletop.init({ key: testUrl,
-                callback: showInfo,
-                simpleSheet: true
-            })
-        }
-
-        // document.getElementById("svg-button").onclick = function() {
-        //     APP.crowbar = new Crowbar()
-        // }
-
-        // document.getElementById("section.chart-container #back-button").onclick = function() {
-        //     console.log("hey!")
-        //     document.querySelector("section.input-container").style.display = "flex"
-        //     document.querySelector("section.chart-container").style.display = "none"
-        // }
-
-    }
-
-    function showInfo(spreadSheetData, tabletop) {
-        document.querySelector("section.chart-container").style.display = "flex"
-        document.querySelector("section.input-container").style.display = "none"
-        document.querySelector("section.chart-container #back-button").onclick = function() {
-            document.querySelector("section.chart-container #chart svg").remove()
-            document.querySelector("section.input-container").style.display = "flex"
-            document.querySelector("section.chart-container").style.display = "none"
-            document.getElementById("user-url").value = ""
-        }
-        //console.log(spreadSheetData)
-        const processedData = APP.dataProcessor.process(spreadSheetData)
-        console.log("data: ", processedData)
-        APP.tree.plot(processedData)
     }
    
     document.addEventListener("DOMContentLoaded", function(e) { 

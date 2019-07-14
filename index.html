@@ -9,6 +9,7 @@
 		<link rel="shortcut icon" href="favicon.png">
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/font.css" />
+		<link rel="stylesheet" type="text/css" href="js/components/ui/ui.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 	<body>
@@ -36,17 +37,30 @@
 				</div>
 				<div id="about" class="centered">about</div>
 			</section>
+			<section class="loader-container">
+				<div id="loader">please wait</div>
+			</section>
 			<section class="chart-container">
-				<div id="back-button" process="./assets/back.svg" process-keep></div>
+				<header>
+					<div id="back-button" process="./js/components/ui/assets/back.svg" process-keep></div>
+				</header>
 				<div id="chart"></div>
+				<footer>
+					<div id="download-button" process="./js/components/ui/assets/download.svg" process-keep></div>
+				</footer>
 			</section>
 		</main>
 		<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="node_modules/d3/dist/d3.min.js"></script>
 		<script type="text/javascript" src="node_modules/tabletop/src/tabletop.min.js"></script>
+		<script type="text/javascript" src="node_modules/stateman/stateman.min.js"></script>
 		<script type="text/javascript" src="js/modules/crowbar.js"></script>
 		<script type="text/javascript" src="js/modules/data-processor.js"></script>
 		<script type="text/javascript" src="js/modules/tree.js"></script>
+		<script type="text/javascript" src="js/components/ui/ui.js"></script>
+		<script type="text/javascript" src="js/states/input-state.js"></script>
+		<script type="text/javascript" src="js/states/chart-state.js"></script>
+		<script type="text/javascript" src="js/states.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="node_modules/static-player/static-player.js"></script>
 		<script type="text/javascript">

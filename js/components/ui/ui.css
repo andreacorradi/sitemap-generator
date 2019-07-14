@@ -1,0 +1,21 @@
+section.chart-container header #back-button {
+  width: 3rem;
+  height: 3rem;
+  stroke: #454545;
+  stroke-width: 2px;
+}
+section.chart-container header #back-button:hover svg path,
+section.chart-container header #back-button:hover svg circle {
+  stroke: #e61532;
+}
+section.chart-container footer #download-button {
+  width: 3rem;
+  height: 3rem;
+  stroke: #454545;
+  stroke-width: 2px;
+}
+section.chart-container footer #download-button:hover svg g path,
+section.chart-container footer #download-button:hover svg g circle,
+section.chart-container footer #download-button:hover svg polyline {
+  stroke: #e61532;
+}
