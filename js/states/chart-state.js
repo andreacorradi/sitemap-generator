@@ -9,7 +9,8 @@ function ChartState() {
     console.log("data: ", processedData)
     const treeData = processedData.tree
     const treeLevels = processedData.levels
-    APP.tree.plot(treeData, treeLevels)
+    const treeDepth = processedData.depth
+    APP.tree.plot(treeData, treeLevels, treeDepth)
 
     document.getElementById("download-button").onclick = function () {
       console.log("download")

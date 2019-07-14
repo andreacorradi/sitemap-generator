@@ -2,13 +2,14 @@ function Tree(width) {
     let self = this
 
     const margin = ({top: 10, right: 120, bottom: 10, left: 40})
-    const dx = 10
 
-    self.plot = function(data, levels) {
+    self.plot = function(data, levels, depth) {
+        // const dx = document.querySelector("section.chart-container #chart").style.height/depth
+        const dx = 10
         const dy = width / levels
         const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x)
         const tree = d3.tree().nodeSize([dx, dy])
-        
+
         const root = d3.hierarchy(data)
 
         root.x0 = dy / 2

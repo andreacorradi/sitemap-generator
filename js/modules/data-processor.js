@@ -91,7 +91,8 @@ function DataProcessor() {
 
         return {
             tree: structure,
-            levels: numLevels
+            levels: numLevels,
+            depth: inData.length
         }
     }
 
