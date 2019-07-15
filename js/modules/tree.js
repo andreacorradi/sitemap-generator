@@ -128,8 +128,12 @@ function Tree(width) {
             })
 
             function openAll() {
-                console.log(nodes)
-                nodes.forEach(d => {
+                // console.log(nodes)
+                // nodes.forEach(d => {
+                //     d.children = d.children ? null : d._children
+                //     update(d)
+                // })
+                root.descendants().forEach((d, i) => {
                     d.children = d.children ? null : d._children
                     update(d)
                 })
