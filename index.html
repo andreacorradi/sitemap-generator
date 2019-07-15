@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="css/font.css" />
 		<link rel="stylesheet" type="text/css" href="js/components/ui/ui.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/tree.css" />
 	</head>
 	<body>
 		<main>
@@ -18,7 +19,7 @@
 				<div id="header" class="centered">
 					<h1>Infotree</h1>
 					<div id="subtitle" class="centered">
-						<h3>Setup the structure in a web published Google spreadsheet and visualize it here</h3>
+						<h3>Setup a hierarchical structure in a web published Google spreadsheet and visualize it!</h3>
 						<h4>See instructions</h4>
 					</div>
 				</div>
@@ -32,7 +33,7 @@
 					</div>
 					<div class="demo-box centered">
 							<p>or try our <a href="https://docs.google.com/spreadsheets/d/1go7xaFFOhF4cRRrJKhp0-7GAMSBbaVo_YtLrLLPa-uY/edit?usp=sharing" target="_blank">sample file</a></p>
-							<button id="demo-button">SAMPLE</button>
+							<button id="demo-button">TRY</button>
 					</div>
 				</div>
 				<div id="about" class="centered">about</div>
@@ -41,13 +42,13 @@
 				<div id="loader">please wait</div>
 			</section>
 			<section class="chart-container">
-				<header>
+				<div id="top-nav">
 					<div id="back-button" process="./js/components/ui/assets/back.svg" process-keep></div>
-				</header>
+				</div>
 				<div id="chart"></div>
-				<footer>
+				<div id="bottom-nav">
 					<div id="download-button" process="./js/components/ui/assets/download.svg" process-keep></div>
-				</footer>
+				</div>
 			</section>
 		</main>
 		<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>

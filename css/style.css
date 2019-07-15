@@ -23,7 +23,7 @@ h1 {
   color: #e61532;
 }
 h3 {
-  font-family: Georgia, serif;
+  font-family: Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.4rem;
   margin-bottom: 0.5rem;
@@ -138,51 +138,16 @@ section.loader-container {
 section.loader-container #loader {
   height: 2rem;
 }
-section.chart-container header {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
 section.chart-container #chart {
   width: 100%;
-  height: 100%;
-  margin-top: 2rem;
+  height: calc(100% - 4rem);
+  padding-top: 4rem;
   background: white;
-}
-section.chart-container footer {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: scroll;
 }
 
 @media only screen and (max-width: 1199px){
- 
   section.input-container .input-box {
     width: 70%;
   }
-   
-}
-
-.node {
-  cursor: pointer;
-}
-
-.node circle {
-  fill: white;
-  stroke: steelblue;
-  stroke-width: 3px;
-}
-
-.node text {
-  font: 12px sans-serif;
-}
-
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 2px;
 }

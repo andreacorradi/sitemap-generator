@@ -1,12 +1,12 @@
 function Tree(width) {
     let self = this
 
-    const margin = ({top: 10, right: 120, bottom: 10, left: 40})
+    const margin = ({top: 10, right: 120, bottom: 10, left: 80})
 
     self.plot = function(data, levels, depth) {
         // const dx = document.querySelector("section.chart-container #chart").style.height/depth
-        const dx = 10
-        const dy = width / levels
+        const dx = 20
+        const dy = (width / levels)*0.9
         const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x)
         const tree = d3.tree().nodeSize([dx, dy])
 
@@ -41,8 +41,8 @@ function Tree(width) {
             const nodes = root.descendants().reverse()
             const links = root.links()
 
-            // Compute the new tree layout.
-            tree(root);
+            // Compute the new tree layout
+            tree(root)
 
             let left = root
             let right = root
@@ -73,7 +73,7 @@ function Tree(width) {
                 })
 
             nodeEnter.append("circle")
-                .attr("r", 2.5)
+                .attr("r", 4)
                 .attr("fill", d => d._children ? "#e61532" : "#454545")
                 .attr("stroke-width", 10)
 
@@ -126,12 +126,24 @@ function Tree(width) {
                 d.x0 = d.x
                 d.y0 = d.y
             })
+
+            function openAll() {
+                console.log(nodes)
+                nodes.forEach(d => {
+                    d.children = d.children ? null : d._children
+                    update(d)
+                })
+            }
+
+            window.onclick = function() {
+                openAll()
+            }
         }
 
-        update(root)
-        svg.node()
-            
-        }
+    update(root)
+    svg.node()
+        
+    }
 
     return self
 }

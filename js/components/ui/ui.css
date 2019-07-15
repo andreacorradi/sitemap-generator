@@ -1,21 +1,43 @@
-section.chart-container header #back-button {
+section.chart-container #top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+section.chart-container #bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+}
+section.chart-container #back-button {
   width: 3rem;
   height: 3rem;
   stroke: #454545;
   stroke-width: 2px;
 }
-section.chart-container header #back-button:hover svg path,
-section.chart-container header #back-button:hover svg circle {
+section.chart-container #back-button:hover svg path,
+section.chart-container #back-button:hover svg circle {
   stroke: #e61532;
 }
-section.chart-container footer #download-button {
+section.chart-container #download-button {
   width: 3rem;
   height: 3rem;
   stroke: #454545;
   stroke-width: 2px;
 }
-section.chart-container footer #download-button:hover svg g path,
-section.chart-container footer #download-button:hover svg g circle,
-section.chart-container footer #download-button:hover svg polyline {
+section.chart-container #download-button:hover svg g path,
+section.chart-container #download-button:hover svg g circle,
+section.chart-container #download-button:hover svg polyline {
   stroke: #e61532;
 }

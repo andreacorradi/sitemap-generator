@@ -14,7 +14,7 @@ function ChartState() {
 
     document.getElementById("download-button").onclick = function () {
       console.log("download")
-      APP.crowbar = new Crowbar()
+      APP.crowbar = APP.crowbar || new Crowbar()
     }
   }
 

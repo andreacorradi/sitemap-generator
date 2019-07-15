@@ -12,7 +12,7 @@ function Crowbar() {
     svg: "http://www.w3.org/2000/svg"
   };
 
-  initialize();
+  initialize()
 
   function initialize() {
     var documents = [window.document],
@@ -46,16 +46,18 @@ function Crowbar() {
     });
 
     documents.forEach(function(doc) {
-      var newSources = getSources(doc, emptySvgDeclarationComputed);
+      var newSources = getSources(doc, emptySvgDeclarationComputed)
       // because of prototype on NYT pages
       for (var i = 0; i < newSources.length; i++) {
-        SVGSources.push(newSources[i]);
+        SVGSources.push(newSources[i])
       }
-    });
-    if (SVGSources.length > 1) {
-      createPopover(SVGSources);
-    } else if (SVGSources.length > 0) {
-      download(SVGSources[0]);
+    })
+    // if (SVGSources.length > 1) {
+    //   createPopover(SVGSources)
+    // } else if (SVGSources.length > 0) {
+    //   download(SVGSources[0])
+    if (SVGSources.length > 0) {
+      download(SVGSources[1])
     } else {
       alert("The Crowbar couldn’t find any SVG nodes.");
     }

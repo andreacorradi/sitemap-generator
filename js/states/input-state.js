@@ -12,7 +12,7 @@ function InputState() {
           APP.stator.go("chart", {url: url})
         } else {
           console.log("error")
-          window.alert("Please input a valid URL!")
+          window.alert("Please input an URL!")
         }
       }
 
