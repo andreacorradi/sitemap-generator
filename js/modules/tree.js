@@ -3,7 +3,7 @@ function Tree(width) {
 
     const margin = ({top: 10, right: 120, bottom: 10, left: 80})
 
-    self.plot = function(data, levels, depth) {
+    self.plot = function(data, levels, depth) { // depth not used
         // const dx = document.querySelector("section.chart-container #chart").style.height/depth
         const dx = 20
         const dy = (width / levels)*0.9
@@ -23,14 +23,9 @@ function Tree(width) {
         //const svg = d3.create("svg")
         const svg = d3.select("#chart").append("svg")
             .attr("viewBox", [-margin.left, -margin.top, width, dx])
-            .style("font", "10px sans-serif")
             .style("user-select", "none")
 
         const gLink = svg.append("g")
-            .attr("fill", "none")
-            .attr("stroke", "#555")
-            .attr("stroke-opacity", 0.4)
-            .attr("stroke-width", 1.5)
 
         const gNode = svg.append("g")
             .attr("cursor", "pointer")
@@ -67,14 +62,16 @@ function Tree(width) {
                 .attr("transform", d => `translate(${source.y0},${source.x0})`)
                 .attr("fill-opacity", 0)
                 .attr("stroke-opacity", 0)
-                .on("click", d => {
-                    d.children = d.children ? null : d._children
-                    update(d)
-                })
+                // .on("click", d => {
+                //     d.children = d.children ? null : d._children
+                //     update(d)
+                // })
+                .on("click", click)
 
             nodeEnter.append("circle")
                 .attr("r", 4)
-                .attr("fill", d => d._children ? "#e61532" : "#454545")
+                // .attr("fill", d => d._children ? "#e61532" : "#454545")
+                .attr("class", d => d._children ? "node" : "leaf")
                 .attr("stroke-width", 10)
 
             nodeEnter.append("text")
@@ -127,24 +124,57 @@ function Tree(width) {
                 d.y0 = d.y
             })
 
-            function openAll() {
-                // console.log(nodes)
-                // nodes.forEach(d => {
-                //     d.children = d.children ? null : d._children
-                //     update(d)
-                // })
-                root.descendants().forEach((d, i) => {
-                    d.children = d.children ? null : d._children
-                    update(d)
-                })
+            // Toggle children on click
+            function click(d) {
+                if (d.children) {
+                    d._children = d.children
+                    d.children = null
+                } else {
+                    d.children = d._children
+                    d._children = null
+                }
+                update(d)
+            }
+            function expand(d){   
+                var children = (d.children)?d.children:d._children
+                if (d._children) {        
+                    d.children = d._children
+                    d._children = null     
+                }
+                update(d)
+                if(children) children.forEach(expand)                
+            }
+            function collapse(d) {
+                if (d.children) {
+                    d._children = d.children;
+                    d._children.forEach(collapse);
+                    d.children = null;
+                }
+            }
+            function expandAll(){
+                expand(root) 
+                update(root)        
+            }
+            function collapseAll(){
+                root.children.forEach(collapse)
+                collapse(root)
+                update(root)
             }
 
-            window.onclick = function() {
-                openAll()
+            document.getElementById("expandall-button").onclick = function () {
+                console.log("expand all")
+                expandAll()
             }
-        }
+            document.getElementById("collapseall-button").onclick = function () {
+                console.log("collapse all")
+                collapseAll()
+            }
+
+            //d3.selectAll("circle.node").style("fill", "#e61532")
+        } // END update
 
     update(root)
+    console.log(root)
     svg.node()
         
     }

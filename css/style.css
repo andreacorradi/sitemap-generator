@@ -128,6 +128,26 @@ section.input-container .demo-box #demo-button:hover {
   border-color: #e61532;
   color: #e61532;
 }
+section.input-container #about {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section.input-container #about span {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  color: #e61532;
+}
+section.input-container #about a {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  color: #454545;
+
+}
+section.input-container #about a:hover {
+  color: #e61532;
+}
 section.loader-container {
   width: 100%;
   background: white;

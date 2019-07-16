@@ -17,27 +17,24 @@ section.chart-container #bottom-nav {
   height: 5rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-right: 1rem;
 }
-section.chart-container #back-button {
+section.chart-container #bottom-nav #controls {
+  width: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+}
+section.chart-container .chart-button  {
   width: 3rem;
   height: 3rem;
   stroke: #454545;
   stroke-width: 2px;
 }
-section.chart-container #back-button:hover svg path,
-section.chart-container #back-button:hover svg circle {
-  stroke: #e61532;
-}
-section.chart-container #download-button {
-  width: 3rem;
-  height: 3rem;
-  stroke: #454545;
-  stroke-width: 2px;
-}
-section.chart-container #download-button:hover svg g path,
-section.chart-container #download-button:hover svg g circle,
-section.chart-container #download-button:hover svg polyline {
+section.chart-container .chart-button:hover svg g path,
+section.chart-container .chart-button:hover svg g circle,
+section.chart-container .chart-button:hover svg polyline {
   stroke: #e61532;
 }
