@@ -1,1 +1,1 @@
-# sitemap-generator
+# infotree
